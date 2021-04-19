@@ -14,6 +14,7 @@ const jsonGetch = async (url, callback, strKey) => {
       callback(responseData[strKey]);
     else
       callback(responseData);
+
   } catch (err) {
     console.error(`Error in fetch: ${err.message}`)
   }
@@ -35,6 +36,9 @@ const jsonPetch = async (url, payload, callback) => {
       throw (error);
     }
     const body = await response.json();
+    //The model has been updated. We are done. Handle
+    //concat of data.strKey to existing state be handled by
+    //client of this function, which will invoke a rendering
     callback(body);
 
   } catch (err) {
